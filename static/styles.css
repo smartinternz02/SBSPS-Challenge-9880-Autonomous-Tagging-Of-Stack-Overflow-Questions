@@ -1,0 +1,87 @@
+/* styles.css */
+
+/* Body styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styles */
+.w3-center {
+    text-align: center;
+}
+
+.w3-padding-16 {
+    padding: 16px;
+}
+
+.w3-red {
+    background-color: #f44336;
+}
+
+.w3-text-white {
+    color: #fff;
+}
+
+.w3-xxlarge {
+    font-size: 28px;
+}
+
+/* Container styles */
+.ml-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.container {
+    padding: 20px;
+}
+
+.w3-margin-top {
+    margin-top: 16px;
+}
+
+/* Form styles */
+form {
+    text-align: center;
+}
+
+textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    outline: none;
+}
+
+input[type="submit"] {
+    color: #fff;
+    background-color: #f44336;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+}
+
+input[type="submit"]:hover {
+    background-color: #d32f2f;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+}
+
+#predictionResult{
+    margin-top: 60px;
+    color:green;
+    font-size: 50px;
+    font-family:bold;
+}

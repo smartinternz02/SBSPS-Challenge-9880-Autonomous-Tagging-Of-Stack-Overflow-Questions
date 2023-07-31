@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="https://cdn.sstatic.net/Sites/stackoverflow/company/Img/logos/so/so-icon.svg?v=f13eb" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../static/styles.css">
+    <link rel="stylesheet" href="../static/w3.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Tag predictor</title>
+</head>
+<body>
+    <div class="w3-center w3-padding-16 w3-red w3-text-white w3-xxlarge">
+        Tag Predictor
+    </div>
+    <div class="ml-container container w3-center w3-margin-top">
+        <form id="predictionForm" onsubmit="return submitForm(event)">
+            <textarea name="question" id="question" style="outline: none;" placeholder="Enter your query" rows="6" cols="50" required></textarea><br/>
+            <input type="submit" class="btn-info w3-button w3-red w3-xlarge w3-round-large w3-hover-brown" value="Submit">
+        </form>
+        <div id="predictionResult"></div>  <!-- Placeholder for the prediction result -->
+    </div>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();  // Prevent form submission and page reload
+
+            var question = document.getElementById("question").value;
+
+            fetch("/predict", {
+                method: "POST",
+                body: JSON.stringify({ "question": question }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                var predictionResult = document.getElementById("predictionResult");
+                predictionResult.innerHTML = "Tags: " + data.join(", ");
+            });
+
+            return false;  // Prevent further default form actions
+        }
+    </script>
+</body>
+</html>
